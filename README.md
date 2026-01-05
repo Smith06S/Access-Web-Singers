@@ -129,16 +129,24 @@ Access-Web-Singers/
 ### WAVE Report
 
 index.html
+
 ![alt text](image.png)
 
+
 product.html
+
 ![alt text](image-1.png)
 
+
 about.html
+
 ![alt text](image-3.png)
 
+
 contact.html
+
 ![alt text](image-2.png)
+
 
 
 
