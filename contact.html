@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Premium Piano Store</title>
   <meta name="description" content="Contact us for more information about our premium pianos.">
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,7 +14,7 @@
     <h1>Premium Piano Store</h1>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="product.html">Product</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" aria-current="page">Contact</a></li>
@@ -30,18 +30,20 @@
           <legend>Personal Information</legend>
           
           <div class="form-group">
-            <label for="firstName">First Name: <span aria-label="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" required aria-required="true">
+            <label for="firstName">First Name: <span>*</span></label>
+            <input type="text" id="firstName" name="firstName" required aria-describedby="firstNameError">
+            <span id="firstNameError" class="error-message" role="alert" aria-live="polite"></span>
           </div>
 
           <div class="form-group">
-            <label for="lastName">Last Name: <span aria-label="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" required aria-required="true">
+            <label for="lastName">Last Name: <span>*</span></label>
+            <input type="text" id="lastName" name="lastName" required aria-describedby="lastNameError">
+            <span id="lastNameError" class="error-message" role="alert" aria-live="polite"></span>
           </div>
 
           <div class="form-group">
-            <label for="birthDate">Date of Birth: <span aria-label="required">*</span></label>
-            <input type="date" id="birthDate" name="birthDate" required aria-required="true" aria-describedby="birthDateHelp">
+            <label for="birthDate">Date of Birth: <span>*</span></label>
+            <input type="date" id="birthDate" name="birthDate" required aria-describedby="birthDateHelp">
             <small id="birthDateHelp">Format: DD/MM/YYYY</small>
           </div>
         </fieldset>
@@ -50,40 +52,42 @@
           <legend>Contact Details</legend>
           
           <div class="form-group">
-            <label for="email">Email: <span aria-label="required">*</span></label>
-            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp" placeholder="example@email.com">
+            <label for="email">Email: <span>*</span></label>
+            <input type="email" id="email" name="email" required aria-describedby="emailHelp emailError" placeholder="example@email.com">
             <small id="emailHelp">Format: example@email.com</small>
+            <span id="emailError" class="error-message" role="alert" aria-live="polite"></span>
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone: <span aria-label="required">*</span></label>
-            <input type="tel" id="phone" name="phone" required aria-required="true" aria-describedby="phoneHelp" placeholder="06 12 34 56 78">
+            <label for="phone">Phone: <span>*</span></label>
+            <input type="tel" id="phone" name="phone" required aria-describedby="phoneHelp phoneError" placeholder="06 12 34 56 78">
             <small id="phoneHelp">Format: 06 XX XX XX XX</small>
+            <span id="phoneError" class="error-message" role="alert" aria-live="polite"></span>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Preferred Contact Time: <span aria-label="required">*</span></legend>
+          <legend>Preferred Contact Time: <span>*</span></legend>
           
           <div class="form-group">
-            <input type="radio" id="morning" name="contactTime" value="morning" required aria-required="true">
+            <input type="radio" id="morning" name="contactTime" value="morning" required>
             <label for="morning">Morning (9am - 12pm)</label>
           </div>
 
           <div class="form-group">
-            <input type="radio" id="afternoon" name="contactTime" value="afternoon" required aria-required="true">
+            <input type="radio" id="afternoon" name="contactTime" value="afternoon" required>
             <label for="afternoon">Afternoon (2pm - 5pm)</label>
           </div>
 
           <div class="form-group">
-            <input type="radio" id="evening" name="contactTime" value="evening" required aria-required="true">
+            <input type="radio" id="evening" name="contactTime" value="evening" required>
             <label for="evening">Evening (5pm - 8pm)</label>
           </div>
         </fieldset>
 
         <div class="form-group">
-          <label for="message">Message: <span aria-label="required">*</span></label>
-          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+          <label for="message">Message: <span>*</span></label>
+          <textarea id="message" name="message" rows="5" required></textarea>
         </div>
 
         <button type="submit">Send Message</button>
@@ -93,6 +97,18 @@
         <p>Thank you! Your message has been sent successfully.</p>
       </div>
     </section>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" style="display: none;">
+      <div class="modal-content">
+        <h2 id="modalTitle">Confirm Submission</h2>
+        <p>Are you sure you want to send this message?</p>
+        <div class="modal-buttons">
+          <button type="button" id="confirmBtn" class="btn-confirm">Confirm</button>
+          <button type="button" id="cancelBtn" class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -107,6 +123,6 @@
     <p>&copy; 2025 Premium Piano Store. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

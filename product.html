@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product - Premium Grand Piano</title>
   <meta name="description" content="Premium Grand Piano with exceptional sound quality and craftsmanship.">
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,7 +14,7 @@
     <h1>Premium Piano Store</h1>
     <nav aria-label="Main navigation">
       <ul>
-        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="product.html" aria-current="page">Product</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -24,34 +24,50 @@
 
   <main>
     <article>
-      <section>
-        <h2>Premium Grand Piano</h2>
+      <h2>Premium Grand Piano</h2>
+      
+      <div>
         <p>
           Our Premium Grand Piano combines traditional craftsmanship with modern precision. 
           Each instrument is handcrafted using the finest materials, delivering rich, warm tones 
           that resonate beautifully in any space. Whether you're a professional pianist or an 
           enthusiastic learner, this piano offers exceptional playability and timeless elegance.
         </p>
-      </section>
+      </div>
 
       <section>
         <h3>Product Gallery</h3>
-        <figure>
-          <img src="images/piano_front.webp" alt="Front view of the Premium Grand Piano showing the keyboard and elegant finish" width="600" height="400">
-          <figcaption>Front view of the Premium Grand Piano</figcaption>
-        </figure>
+        <div class="carousel" role="region" aria-label="Product gallery" tabindex="0">
+          <div class="carousel-viewport">
+            <button type="button" class="carousel-arrow left" id="prevSlide" aria-label="Previous image">&#9664;</button>
+            <figure>
+              <img id="carouselImage" src="assets/images/piano_front.webp" alt="Front view of the Premium Grand Piano showing the keyboard and elegant finish" width="600" height="400">
+              <figcaption id="carouselCaption">Front view of the Premium Grand Piano</figcaption>
+            </figure>
+            <button type="button" class="carousel-arrow right" id="nextSlide" aria-label="Next image">&#9654;</button>
+          </div>
+          <div class="carousel-status sr-only" aria-live="polite" id="carouselStatus">Image 1 of 6</div>
+        </div>
       </section>
 
       <section>
         <h3>History of the Piano</h3>
         <figure>
           <video controls preload="metadata" width="640" height="360">
-            <source src="video/The History of the Piano_ From Harpsichords to Modern Masterpieces.mp4" type="video/mp4">
-            <track kind="subtitles" label="English" srclang="en" src="video/The History of the Piano From Harpsichords to Modern Masterpieces.vtt" default>
+            <source src="assets/video/The%20History%20of%20the%20Piano_%20From%20Harpsichords%20to%20Modern%20Masterpieces.mp4" type="video/mp4">
+            <track kind="captions" label="English" srclang="en" src="assets/video/The%20History%20of%20the%20Piano%20From%20Harpsichords%20to%20Modern%20Masterpieces.vtt" default>
             Your browser does not support the video element.
           </video>
           <figcaption>The History of the Piano: From Harpsichords to Modern Masterpieces</figcaption>
         </figure>
+        
+        <details>
+          <summary>Video Transcript</summary>
+          <div>
+            <p>This video explores the fascinating evolution of the piano, from its predecessors like the harpsichord to the modern pianos we know today. The piano has a rich history spanning several centuries, with innovations in design and mechanics that have shaped its distinctive sound and playability.</p>
+            <p>The journey begins with early keyboard instruments and traces the development through various technological advances, showcasing how master craftsmen and innovators contributed to creating one of the world's most beloved musical instruments.</p>
+          </div>
+        </details>
       </section>
 
       <section id="definitions">
@@ -84,5 +100,7 @@
     </nav>
     <p>&copy; 2025 Premium Piano Store. All rights reserved.</p>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
