@@ -1,4 +1,3 @@
-// Contact Form Validation with Modal and DOM Error Messages
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const confirmModal = document.getElementById('confirmModal');
@@ -11,46 +10,38 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Clear previous errors
             clearAllErrors();
             
-            // Get form values
             const firstName = document.getElementById('firstName').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
+            const message = document.getElementById('message').value.trim(); 
             let hasError = false;
             
-            // Validate first name (allow accents)
             const namePattern = /^[a-zA-ZÀ-ÿ\s'-]+$/;
             if (!namePattern.test(firstName)) {
                 showError('firstName', 'Please enter a valid first name (letters, accents, spaces, hyphens, and apostrophes only).');
                 hasError = true;
             }
             
-            // Validate last name
             if (!namePattern.test(lastName)) {
                 showError('lastName', 'Please enter a valid last name (letters, accents, spaces, hyphens, and apostrophes only).');
                 hasError = true;
             }
             
-            // Validate email
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
                 showError('email', 'Please enter a valid email address.');
                 hasError = true;
             }
             
-            // Validate phone (French format)
             const phonePattern = /^0[1-9](\s?\d{2}){4}$/;
             if (!phonePattern.test(phone)) {
                 showError('phone', 'Please enter a valid phone number (format: 06 12 34 56 78).');
                 hasError = true;
             }
             
-            // If validation passes, open confirmation modal
             if (!hasError) {
                 openModal();
             }

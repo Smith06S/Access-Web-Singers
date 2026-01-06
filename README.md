@@ -130,22 +130,22 @@ Access-Web-Singers/
 
 index.html
 
-![alt text](image.png)
+![alt text](/images/indexWave.png)
 
 
 product.html
 
-![alt text](image-1.png)
+![alt text](/images/productWave.png)
 
 
 about.html
 
-![alt text](image-3.png)
+![alt text](/images/aboutWave.png)
 
 
 contact.html
 
-![alt text](image-2.png)
+![alt text](/images/contactWave.png)
 
 
 
