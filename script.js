@@ -1,3 +1,4 @@
+// Form Validation and Modal Handling
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const confirmModal = document.getElementById('confirmModal');
@@ -47,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Confirm button in modal
         if (confirmBtn) {
             confirmBtn.addEventListener('click', function() {
                 closeModal();
@@ -56,14 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Cancel button in modal
         if (cancelBtn) {
             cancelBtn.addEventListener('click', function() {
                 closeModal();
             });
         }
         
-        // Handle Escape key to close modal
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' || e.keyCode === 27) {
                 if (confirmModal && confirmModal.style.display === 'flex') {
@@ -72,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Handle Enter key on modal buttons
         if (confirmModal) {
             confirmModal.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
@@ -86,11 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Accessible carousel on product page
     initCarousel();
+    loadVideoTranscript();
 });
 
-// Carousel logic
+// Carousel Initialization
 function initCarousel() {
     const carouselImage = document.getElementById('carouselImage');
     const carouselCaption = document.getElementById('carouselCaption');
@@ -186,10 +183,10 @@ function initCarousel() {
         }
     });
 
-    // Initialize
     updateSlide(currentIndex);
 }
 
+// Error Handling
 function showError(fieldId, message) {
     const field = document.getElementById(fieldId);
     const errorSpan = document.getElementById(fieldId + 'Error');
@@ -205,6 +202,7 @@ function showError(fieldId, message) {
     }
 }
 
+// Error Clearing
 function clearAllErrors() {
     const errorMessages = document.querySelectorAll('.error-message');
     const inputs = document.querySelectorAll('input[aria-invalid="true"]');
@@ -220,67 +218,108 @@ function clearAllErrors() {
     });
 }
 
+// Modal Handling
 function openModal() {
     const confirmModal = document.getElementById('confirmModal');
     const mainContent = document.querySelector('main');
     const confirmBtn = document.getElementById('confirmBtn');
     
     if (confirmModal) {
-        // Store the current focus
         previousFocus = document.activeElement;
         
-        // Show modal
         confirmModal.style.display = 'flex';
         confirmModal.setAttribute('aria-hidden', 'false');
         
-        // Hide main content from screen readers
         if (mainContent) {
             mainContent.setAttribute('aria-hidden', 'true');
         }
         
-        // Focus on confirm button
         if (confirmBtn) {
             confirmBtn.focus();
         }
         
-        // Prevent body scroll
         document.body.style.overflow = 'hidden';
     }
 }
 
+// Close Modal
 function closeModal() {
     const confirmModal = document.getElementById('confirmModal');
     const mainContent = document.querySelector('main');
     
     if (confirmModal) {
-        // Hide modal
         confirmModal.style.display = 'none';
         confirmModal.setAttribute('aria-hidden', 'true');
         
-        // Restore main content to screen readers
         if (mainContent) {
             mainContent.removeAttribute('aria-hidden');
         }
         
-        // Restore previous focus
         if (previousFocus) {
             previousFocus.focus();
         }
         
-        // Restore body scroll
         document.body.style.overflow = '';
     }
 }
 
+// Show Success Message
 function showSuccessMessage() {
     const successMessage = document.getElementById('successMessage');
     if (successMessage) {
         successMessage.style.display = 'block';
         successMessage.focus();
         
-        // Hide message after 5 seconds
         setTimeout(function() {
             successMessage.style.display = 'none';
         }, 5000);
     }
+}
+
+// Load Video Transcript from VTT file
+function loadVideoTranscript() {
+    const transcriptContainer = document.getElementById('videoTranscript');
+    if (!transcriptContainer) return;
+
+    const vttPath = 'assets/video/The History of the Piano From Harpsichords to Modern Masterpieces.vtt';
+    
+    fetch(vttPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load transcript');
+            }
+            return response.text();
+        })
+        .then(vttContent => {
+            const transcript = parseVTT(vttContent);
+            transcriptContainer.innerHTML = `<p>${transcript}</p>`;
+        })
+        .catch(error => {
+            console.error('Error loading transcript:', error);
+            transcriptContainer.innerHTML = '<p>Transcript unavailable.</p>';
+        });
+}
+
+// Parse VTT file to extract text only
+function parseVTT(vttContent) {
+    const lines = vttContent.split('\n');
+    const textLines = [];
+    
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        
+        // Skip empty lines, WEBVTT header, cue numbers, and timestamp lines
+        if (line === '' || 
+            line === 'WEBVTT' || 
+            /^\d+$/.test(line) || 
+            /-->/.test(line)) {
+            continue;
+        }
+        
+        if (line) {
+            textLines.push(line);
+        }
+    }
+    
+    return textLines.join(' ');
 }

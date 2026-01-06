@@ -22,13 +22,13 @@ The website consists of 4 main pages:
 
 ### 3. **Contact** (`contact.html`)
 - Complete form with validation:
-  - First name, last name (accepts accents)
+  - First name, last name
   - Date of birth
   - Email and phone 
   - Preferred contact time with radio buttons
   - Message textarea
 - Real-time JavaScript validation with clear error messages
-- Confirmation modal with focus management
+- Confirmation modal
 - Success notification after submission
 
 ### 4. **About** (`about.html`)
@@ -44,14 +44,14 @@ The website consists of 4 main pages:
 
 ### ARIA & Semantic HTML
 - Proper landmark regions (`<header>`, `<main>`, `<nav>`, `<footer>`)
-- ARIA labels for screen readers (`aria-label`, `aria-current`, `aria-live`)
-- `<article>`, `<section>`, `<figure>` used appropriately
-- Heading hierarchy (h1 → h2 → h3)
+- ARIA labels for screen readers
+- `<article>`, `<section>`, `<figure>`
+- Heading hierarchy 
 
 ### Forms
 - Every input has a corresponding `<label>`
 - `<fieldset>` and `<legend>` for grouped inputs
-- Help text for expected formats (visible to all users)
+- Help text for expected formats
 - Error messages with `role="alert"` and `aria-live="polite"`
 - Native HTML5 `required` attribute 
 
@@ -68,13 +68,13 @@ The website consists of 4 main pages:
 
 ### Video Accessibility
 - Captions with `<track kind="captions">` and .vtt file
-- Text transcript in expandable `<details>` element
+- Text transcript dynamically loaded from .vtt file using JavaScript
+- Transcript displayed in expandable `<details>` element
 - Controls visible and keyboard-accessible
 
 ### Color Contrast
-- All text meets WCAG AA standards 
+- All text meets WCAG standards 
 - Button colors: `#008060` with white text 
-- No reliance on color alone for information
 
 ### Images
 - Descriptive `alt` text for all images
@@ -83,7 +83,7 @@ The website consists of 4 main pages:
 ## Technologies Used
 
 - **HTML5**
-- **CSS3**
+- **CSS**
 - **Vanilla JavaScript**
 - **WebVTT**
 
@@ -111,12 +111,45 @@ Access-Web-Singers/
 │   │   ├── piano_closed.webp
 │   │   ├── piano_buttons.webp
 │   │   ├── piano_decoration.webp
-│   │   └── piano_leftButtons.webp
+│   │   ├── piano_leftButtons.webp
+│   │   ├── aboutWave.png
+│   │   ├── contactWave.png
+│   │   ├── indexWave.png
+│   │   └── productWave.png
 │   └── video/
 │       ├── The History of the Piano...mp4
 │       └── The History of the Piano...vtt
 └── README.md              
 ```
+
+## How to Launch the Website
+
+This is a static website that doesn't require any build process or server installation.
+
+**Note:** To view the video transcript feature (which loads dynamically from the .vtt file), you must use a local server due to browser security restrictions.
+
+### Option 1: Open Directly
+Simply open `index.html` in your web browser by double-clicking the file.
+
+**Limitation:** Video transcript won't load when opening files directly.
+
+### Option 2: Using a Local Server (Recommended)
+For full functionality including video transcript:
+
+1. **Using Python:**
+   ```bash
+   python -m http.server 8000
+   ```
+   Then visit: `http://localhost:8000`
+
+2. **Using VS Code:**
+   - Install the "Live Server" extension
+   - Right-click on `index.html` and select "Open with Live Server"
+
+3. **Using Node.js:**
+   ```bash
+   npx http-server
+   ```
 
 ## Testing & Validation
 
@@ -130,25 +163,22 @@ Access-Web-Singers/
 
 index.html
 
-![alt text](/images/indexWave.png)
+![alt text](/assets/images/indexWave.png)
 
 
 product.html
 
-![alt text](/images/productWave.png)
+![alt text](/assets/images/productWave.png)
 
 
 about.html
 
-![alt text](/images/aboutWave.png)
+![alt text](/assets/images/aboutWave.png)
 
 
 contact.html
 
-![alt text](/images/contactWave.png)
-
-
-
+![alt text](/assets/images/contactWave.png)
 
 ### W3C Validation
 - HTML validated with no errors
