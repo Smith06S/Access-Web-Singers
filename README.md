@@ -163,7 +163,7 @@ For full functionality including video transcript:
 
 index.html
 
-![alt text](/assets/images/indexWave.png)
+![alt text](/assets/images/homeWave.png)
 
 
 product.html
